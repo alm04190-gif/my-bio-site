@@ -1,179 +1,133 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Inter, system-ui, sans-serif;
+:root{
+  --bg:#0b1220;
+  --card:#111a2f;
+  --text:#ffffff;
+  --muted:#aab4d4;
+  --accent:#4f9cff;
+  --line:#ff4fd8;
 }
 
-/* ===== Body ===== */
-body {
-  background: #0b0b0b;
-  color: #e5e7eb;
-  transition: background .4s, color .4s;
+.light{
+  --bg:#f4f6fb;
+  --card:#ffffff;
+  --text:#0b1220;
+  --muted:#555;
 }
 
-/* ===== Page Center ===== */
-.page {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+*{
+  box-sizing:border-box;
+  font-family:system-ui, sans-serif;
 }
 
-/* ===== Card ===== */
-.card {
-  width: 100%;
-  max-width: 420px;
-  background: rgba(20,20,20,0.8);
-  backdrop-filter: blur(20px);
-  border-radius: 24px;
-  padding: 32px 26px;
-  border: 1px solid rgba(255,255,255,0.08);
-  animation: cardIn .9s ease forwards;
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
 }
 
-/* ===== Profile ===== */
-.profile {
-  text-align: center;
-  margin-bottom: 28px;
+.theme-toggle{
+  position:fixed;
+  top:15px;
+  right:15px;
+  background:var(--card);
+  border:none;
+  color:var(--text);
+  padding:10px;
+  border-radius:50%;
+  cursor:pointer;
 }
 
-.profile img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 25px 45px rgba(0,0,0,.7);
-  transform: scale(.8);
-  animation: imgIn .9s ease forwards;
+.hero{
+  text-align:center;
+  padding:60px 20px;
 }
 
-.profile h1 {
-  margin-top: 16px;
-  font-size: 26px;
-  font-weight: 600;
+.avatar-ring{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--line));
+  padding:5px;
+  margin:auto;
 }
 
-.profile p {
-  margin-top: 6px;
-  font-size: 14px;
-  color: #9ca3af;
+.avatar-ring img{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
 }
 
-/* ===== Links ===== */
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+.subtitle{
+  color:var(--muted);
 }
 
-/* ===== Buttons ===== */
-.btn {
-  padding: 16px;
-  border-radius: 16px;
-  background: linear-gradient(180deg, #1f1f1f, #121212);
-  border: 1px solid rgba(255,255,255,0.1);
-  text-align: center;
-  color: #f3f4f6;
-  text-decoration: none;
-  font-size: 15px;
-  opacity: 0;
-  transform: translateY(25px);
-  transition: all .35s ease;
+.social-icons a{
+  margin:0 8px;
+  font-size:20px;
+  color:var(--text);
+  transition:.3s;
 }
 
-.btn:hover {
-  transform: translateY(-4px) scale(1.02);
-  background: linear-gradient(180deg, #2a2a2a, #151515);
-  box-shadow: 0 20px 40px rgba(0,0,0,.6);
+.social-icons a:hover{
+  color:var(--accent);
+  transform:scale(1.2);
 }
 
-/* ===== Icon Buttons ===== */
-.icon-btn {
-  position: relative;
-  overflow: hidden;
+.section{
+  padding:30px 20px;
+  border-left:4px solid var(--line);
 }
 
-/* Telegram pulse */
-.telegram::after {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background: rgba(0,136,204,0.18);
-  border-radius: 50%;
-  animation: pulse 2s infinite;
+.section h2{
+  margin-bottom:15px;
 }
 
-/* Instagram gradient */
-.instagram {
-  background: linear-gradient(270deg,#833ab4,#fd1d1d,#fcb045);
-  background-size: 600% 600%;
-  animation: insta 6s ease infinite;
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
 }
 
-/* ===== Footer ===== */
-footer {
-  text-align: center;
-  margin-top: 32px;
-  font-size: 12px;
-  color: #6b7280;
+.card hr{
+  border:none;
+  height:1px;
+  background:rgba(255,255,255,.1);
+  margin:20px 0;
 }
 
-/* ===== Theme Toggle ===== */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  border: none;
-  border-radius: 50%;
-  padding: 10px 14px;
-  font-size: 18px;
-  background: rgba(255,255,255,.1);
-  color: #fff;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
+.list p{
+  margin:10px 0;
 }
 
-/* ===== Light Mode ===== */
-body.light {
-  background: #f4f4f5;
-  color: #111;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
 }
 
-body.light .card {
-  background: rgba(255,255,255,0.9);
-  border-color: rgba(0,0,0,0.1);
+.grid span{
+  background:rgba(255,255,255,.05);
+  padding:12px;
+  border-radius:8px;
 }
 
-body.light .btn {
-  background: linear-gradient(180deg,#ffffff,#f3f4f6);
-  color: #111;
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  background:var(--accent);
+  color:#fff;
+  padding:10px 18px;
+  border-radius:8px;
+  text-decoration:none;
 }
 
-/* ===== Animations ===== */
-@keyframes cardIn {
-  from { opacity: 0; transform: translateY(50px); }
-  to { opacity: 1; transform: translateY(0); }
+.btn.small{
+  margin-right:10px;
 }
 
-@keyframes imgIn {
-  to { transform: scale(1); }
-}
-
-@keyframes pulse {
-  0% { transform: scale(.8); opacity:.6; }
-  70% { transform: scale(1.2); opacity:0; }
-  100% { opacity:0; }
-}
-
-@keyframes insta {
-  0% { background-position:0% 50%; }
-  50% { background-position:100% 50%; }
-  100% { background-position:0% 50%; }
-}
-
-.show {
-  opacity: 1;
-  transform: translateY(0);
+footer{
+  text-align:center;
+  padding:20px;
+  color:var(--muted);
 }
