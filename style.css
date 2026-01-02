@@ -1,194 +1,133 @@
-/* Basic styling */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root{
+  --bg:#0b1220;
+  --card:#111a2f;
+  --text:#ffffff;
+  --muted:#aab4d4;
+  --accent:#4f9cff;
+  --line:#ff4fd8;
 }
 
-/* Body and theme styles */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: #ddd;
-  transition: all 0.3s ease;
+.light{
+  --bg:#f4f6fb;
+  --card:#ffffff;
+  --text:#0b1220;
+  --muted:#555;
 }
 
-body.light {
-  background-color: #f4f4f9;
-  color: #333;
+*{
+  box-sizing:border-box;
+  font-family:system-ui, sans-serif;
 }
 
-/* Hero Section */
-.hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
 }
 
-.hero .avatar-ring {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-bottom: 20px;
+.theme-toggle{
+  position:fixed;
+  top:15px;
+  right:15px;
+  background:var(--card);
+  border:none;
+  color:var(--text);
+  padding:10px;
+  border-radius:50%;
+  cursor:pointer;
 }
 
-.hero img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+.hero{
+  text-align:center;
+  padding:60px 20px;
 }
 
-h1 {
-  font-size: 2.5rem;
+.avatar-ring{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--line));
+  padding:5px;
+  margin:auto;
 }
 
-.subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+.avatar-ring img{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
 }
 
-.social-icons a {
-  margin: 10px;
-  font-size: 1.5rem;
-  color: #ddd;
-  transition: all 0.3s ease;
+.subtitle{
+  color:var(--muted);
 }
 
-.social-icons a:hover {
-  color: #007bff;
+.social-icons a{
+  margin:0 8px;
+  font-size:20px;
+  color:var(--text);
+  transition:.3s;
 }
 
-/* Theme Toggle Button */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+.social-icons a:hover{
+  color:var(--accent);
+  transform:scale(1.2);
 }
 
-.theme-toggle i {
-  color: #ddd;
+.section{
+  padding:30px 20px;
+  border-left:4px solid var(--line);
 }
 
-/* Button Section Style */
-.button-section {
-  padding: 40px 20px;
-  text-align: center;
+.section h2{
+  margin-bottom:15px;
 }
 
-.button-section .card {
-  background: var(--card);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
 }
 
-.button-section .btn {
-  display: inline-block;
-  margin: 15px 10px;
-  padding: 15px 30px;
-  font-size: 16px;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  text-align: center;
-  font-weight: bold;
+.card hr{
+  border:none;
+  height:1px;
+  background:rgba(255,255,255,.1);
+  margin:20px 0;
 }
 
-.button-admin {
-  background: linear-gradient(135deg, #007bff, #1a73e8);
+.list p{
+  margin:10px 0;
 }
 
-.button-email {
-  background: linear-gradient(135deg, #f39c12, #f1c40f);
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
 }
 
-.button-telegram {
-  background: linear-gradient(135deg, #0088cc, #3b5998);
+.grid span{
+  background:rgba(255,255,255,.05);
+  padding:12px;
+  border-radius:8px;
 }
 
-.button-section .btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  background:var(--accent);
+  color:#fff;
+  padding:10px 18px;
+  border-radius:8px;
+  text-decoration:none;
 }
 
-.button-section .btn:active {
-  transform: translateY(0);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.btn.small{
+  margin-right:10px;
 }
 
-/* Adding glow effect on hover */
-.button-section .btn:hover {
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff;
-}
-
-/* Section Styles */
-.section {
-  padding: 40px;
-  text-align: center;
-}
-
-.card {
-  background: #1c1c1c;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.card.list p {
-  margin: 10px 0;
-}
-
-/* Grid for Hobbies */
-.card.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-.card.grid span {
-  display: flex;
-  align-items: center;
-  font-size: 1.1rem;
-}
-
-.card.grid span i {
-  margin-right: 8px;
-}
-
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-}
-
-footer a {
-  color: #fff;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-  }
-
-  .card.grid {
-    grid-template-columns: 1fr;
-  }
+footer{
+  text-align:center;
+  padding:20px;
+  color:var(--muted);
 }
