@@ -1,20 +1,23 @@
-// সব reveal class এলিমেন্ট ধরছি
-const reveals = document.querySelectorAll(".reveal");
+// Stagger button animation
+const buttons = document.querySelectorAll(".btn");
+buttons.forEach((btn, i) => {
+  setTimeout(() => {
+    btn.classList.add("show");
+  }, i * 160);
+});
 
-// Scroll হলে এই ফাংশন কাজ করবে
-function revealOnScroll() {
-  reveals.forEach(el => {
-    const windowHeight = window.innerHeight;
-    const elementTop = el.getBoundingClientRect().top;
-    const revealPoint = 80;
+// Theme toggle with save
+const toggle = document.getElementById("themeToggle");
+const body = document.body;
 
-    // এলিমেন্ট স্ক্রিনে এলে active হবে
-    if (elementTop < windowHeight - revealPoint) {
-      el.classList.add("active");
-    }
-  });
+if (localStorage.getItem("theme") === "light") {
+  body.classList.add("light");
+  toggle.textContent = "☀️";
 }
 
-// Scroll এবং page load এ trigger
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
+toggle.onclick = () => {
+  body.classList.toggle("light");
+  const isLight = body.classList.contains("light");
+  toggle.textContent = isLight ? "☀️" : "🌙";
+  localStorage.setItem("theme", isLight ? "light" : "dark");
+};
