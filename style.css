@@ -1,104 +1,179 @@
-/* ===== Reset ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: Inter, system-ui, sans-serif;
 }
 
 /* ===== Body ===== */
 body {
-  background: #0f0f0f; /* Black background */
-  color: #e5e5e5;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: #0b0b0b;
+  color: #e5e7eb;
+  transition: background .4s, color .4s;
 }
 
-/* ===== Container ===== */
-.container {
+/* ===== Page Center ===== */
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* ===== Card ===== */
+.card {
   width: 100%;
   max-width: 420px;
-  padding: 30px 20px;
-  text-align: center;
+  background: rgba(20,20,20,0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 32px 26px;
+  border: 1px solid rgba(255,255,255,0.08);
+  animation: cardIn .9s ease forwards;
 }
 
 /* ===== Profile ===== */
+.profile {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
 .profile img {
-  width: 110px;
-  height: 110px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  border: 3px solid #2a2a2a;
-  margin-bottom: 15px;
+  object-fit: cover;
+  box-shadow: 0 25px 45px rgba(0,0,0,.7);
+  transform: scale(.8);
+  animation: imgIn .9s ease forwards;
 }
 
 .profile h1 {
+  margin-top: 16px;
   font-size: 26px;
-  margin-bottom: 6px;
+  font-weight: 600;
 }
 
 .profile p {
-  color: #9ca3af;
+  margin-top: 6px;
   font-size: 14px;
+  color: #9ca3af;
+}
+
+/* ===== Links ===== */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 /* ===== Buttons ===== */
-.links {
-  margin-top: 30px;
-}
-
 .btn {
-  display: block;
-  width: 100%;
-  padding: 14px;
-  margin: 12px 0;
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #1f1f1f, #121212);
+  border: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+  color: #f3f4f6;
   text-decoration: none;
-  color: #e5e5e5;
-  background: #1a1a1a; /* Dark gray */
-  border: 1px solid #2a2a2a;
-  border-radius: 10px;
-  transition: all 0.3s ease;
+  font-size: 15px;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: all .35s ease;
 }
 
-/* Hover effect */
 .btn:hover {
-  transform: translateY(-4px);
-  background: #222;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.45);
+  transform: translateY(-4px) scale(1.02);
+  background: linear-gradient(180deg, #2a2a2a, #151515);
+  box-shadow: 0 20px 40px rgba(0,0,0,.6);
+}
+
+/* ===== Icon Buttons ===== */
+.icon-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Telegram pulse */
+.telegram::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: rgba(0,136,204,0.18);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+/* Instagram gradient */
+.instagram {
+  background: linear-gradient(270deg,#833ab4,#fd1d1d,#fcb045);
+  background-size: 600% 600%;
+  animation: insta 6s ease infinite;
 }
 
 /* ===== Footer ===== */
 footer {
-  margin-top: 35px;
+  text-align: center;
+  margin-top: 32px;
   font-size: 12px;
   color: #6b7280;
 }
 
-/* ===== Page Load Animation ===== */
-.fade-in {
-  animation: fadeUp 0.8s ease forwards;
+/* ===== Theme Toggle ===== */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 14px;
+  font-size: 18px;
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
 }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ===== Light Mode ===== */
+body.light {
+  background: #f4f4f5;
+  color: #111;
 }
 
-/* ===== Scroll Reveal ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: all 0.6s ease;
+body.light .card {
+  background: rgba(255,255,255,0.9);
+  border-color: rgba(0,0,0,0.1);
 }
 
-.reveal.active {
+body.light .btn {
+  background: linear-gradient(180deg,#ffffff,#f3f4f6);
+  color: #111;
+}
+
+/* ===== Animations ===== */
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes imgIn {
+  to { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(.8); opacity:.6; }
+  70% { transform: scale(1.2); opacity:0; }
+  100% { opacity:0; }
+}
+
+@keyframes insta {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+.show {
   opacity: 1;
   transform: translateY(0);
 }
